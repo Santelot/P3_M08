@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P3-M08</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook - P3-M08</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 0 (1 paso) -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision-mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión (1 paso)</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 1 "Materiales y Preparación"</div>
+        <div class="summary">El maestro revisa la preparación de los materiales.</div>
+    </div>
+    <div id="revision-mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (N/A): Proyectar la diapositiva 1 "Materiales y Preparación"</div>
+            <div class="dialogue">N/A (sin diálogo, solo revisión interna del profesor).</div>
+        </div>
+    </div>
+</div>
+ <!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo-ritual-gnius-club')">
+        <div class="title">
+            <span>🎉 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Dar la bienvenida a los estudiantes y explicar los objetivos del día</div>
+        <div class="summary">Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club".</div>
+    </div>
+    <div id="saludo-ritual-gnius-club" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club".</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 ¡Es hora de comenzar una nueva misión! Hoy vamos a aprender a diseñar juegos simples en Scratch. ¡Es hora de activar nuestra creatividad!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo".</div>
+            <div class="dialogue">"¿Cómo están hoy? Si están emocionados, tapen sus oídos. Si necesitan más energía, tapen su boca. ¡Vamos a ver cómo están!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento".</div>
+            <div class="dialogue">"Vamos a juntar nuestras manos en agradecimiento por lo que vamos a aprender hoy. ¡Gracias por venir a esta nueva misión, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="dialogue">"Hoy vamos a aprender a crear juegos simples en Scratch usando eventos y control. Nuestros objetivos son: 1) Aprender a utilizar eventos, 2) Usar bloques de control para diseñar interacciones de juego, y 3) Trabajar en equipo para hacer paper programming."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion-del-dia')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Introducir el Dino de Chrome como un ejemplo de diseño de juegos simples</div>
+        <div class="summary">Proyectar la diapositiva 6 "Innovación del Día".</div>
+    </div>
+    <div id="innovacion-del-dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 6 "Innovación del Día".</div>
+            <div class="dialogue">"Genios, ¿alguna vez han jugado al Dino de Chrome cuando se va el internet? Es un juego simple, pero muy divertido, y fue diseñado para funcionar incluso cuando no estamos conectados. ¡Veamos cómo funciona!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 7 "Video del Dino de Chrome".</div>
+            <div class="dialogue">"Vamos a ver un video corto sobre cómo jugar al Dino de Chrome y qué lo hace tan entretenido. ¡Presten atención a los controles y a cómo el juego va aumentando de dificultad!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 8 "Impacto de la Innovación".</div>
+            <div class="dialogue">"El Dino de Chrome es un ejemplo de cómo algo tan simple como saltar y esquivar puede convertirse en un juego adictivo. ¡Con Scratch podemos hacer algo parecido usando eventos y bloques de control!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 9 y guiar a los estudiantes en una reflexión.</div>
+            <div class="dialogue">"¿Qué piensan de un juego como Dino de Chrome? ¿Cómo creen que podrían crear su propia versión en Scratch, tal vez con otros obstáculos o personajes? ¡Imaginen las posibilidades!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (10 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain-gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym (10 pasos)</span>
+            <span>⏰ Tiempo: 15 minutos</span>
+        </div>
+        <div class="subtitle">Crear un juego estilo Dino de Chrome en Scratch</div>
+        <div class="summary">Proyectar la diapositiva 10 "Brain Gym". Explicar la importancia de activar el cerebro antes de aprender.</div>
+    </div>
+    <div id="brain-gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 10 "Brain Gym".</div>
+            <div class="dialogue">"¡Genios! Antes de comenzar nuestro desafío, vamos a ejercitar nuestros cerebros. Dentro de lo que explicaré hay un Easter Egg, ¡así que presten mucha atención porque al final haré una pregunta para ganar Mon-e!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 11 "Abrir Scratch".</div>
+            <div class="dialogue">"Primero, vamos a abrir Scratch. Vayan a scratch.mit.edu y hagan clic en 'Crear'. Luego, eliminen al gato haciendo clic derecho sobre él y eligiendo 'Eliminar'. Elijan un fondo sencillo haciendo clic en el icono de paisaje, y seleccionen un fondo simple como 'Color sólido'. Esto hará que el dinosaurio y el cactus se destaquen."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 12 "Crear Dinosaurio".</div>
+            <div class="dialogue">"Vamos a crear nuestro personaje principal, el Dinosaurio. Hagan clic en el icono de pincel para 'Pintar un sprite'. Dibuja un dinosaurio sencillo usando formas básicas como rectángulos y círculos. Luego, nombra el sprite como 'Dinosaurio'."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar la diapositiva 13 "Programar el Salto".</div>
+            <div class="dialogue">"Seleccionen el sprite del dinosaurio y vayan a la pestaña 'Código'. Desde la categoría 'Eventos', arrastren 'Cuando se presione la bandera verde'. Luego, en 'Movimiento', agreguen 'Ir a x: -130 y: -100' para posicionar al dinosaurio en la parte inferior izquierda. Ahora, para el salto, usen 'Cuando se presione la tecla espacio'. Dentro de 'Control', agreguen 'Repetir 10 veces' y luego 'Cambiar 'y' por 10' en 'Movimiento'. Después, otro 'Repetir 10 veces' con 'Cambiar 'y' por -10' para que el dinosaurio suba y baje, simulando el salto."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 14 "Crear el Cactus".</div>
+            <div class="dialogue">"Vamos a dibujar un cactus que nuestro dinosaurio deberá esquivar. Hagan clic en 'Pintar un sprite' otra vez y dibujen un cactus sencillo usando las herramientas de forma. Denle el nombre de 'Cactus'."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Proyectar la diapositiva 15 "Movimiento del Cactus".</div>
+            <div class="dialogue">"Seleccionen el sprite del cactus y agreguen 'Cuando se presione la bandera verde'. En 'Control', usen 'Por siempre'. Dentro, agreguen 'Ir a x: 230 y: -100'. Luego, en 'Control', añadan 'Repetir hasta que x < -240'. Dentro, coloquen 'Cambiar x por -5' para que el cactus se mueva. Finalmente, agreguen 'Esperar 0.02 segundos' para controlar la velocidad del cactus."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar la diapositiva 16 "Detectar Colisiones".</div>
+            <div class="dialogue">"Si el dinosaurio toca el cactus, el juego terminará. En el código del dinosaurio, agreguen un bloque 'Por siempre' y dentro de este 'Si entonces'. La condición será 'Tocando cactus' desde 'Sensores'. Si esto ocurre, usen 'Detener todos' en 'Control' para detener el juego."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (2 minutos): Proyectar la diapositiva 17 "Puntuación y Fin del Juego".</div>
+            <div class="dialogue">"Ahora, vamos a agregar una puntuación. En 'Variables', creen una nueva variable llamada 'Puntuación'. En el código del cactus, después de 'al presionar banderita' agreguen 'FIJAR PUNTUACIÓN EN 0', esto hará que cada vez que iniciemos el juego la puntuación sea 0, después de 'Repetir hasta que x < -230', agreguen 'Cambiar puntuación por 1'. Esto hará que cada vez que el cactus sea saltado se sumará un punto."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (5 minutos): Proyectar la diapositiva 18 "Mejoras y Ajustes".</div>
+            <div class="dialogue">"Ahora que han creado su propio juego de dinosaurio, ¡es momento de jugar! Hagan clic en la bandera verde y prueben su juego. Si quieren que el cactus sea más rápido, cambien 'Cambiar x por -5' a un número más negativo como -8. También pueden hacer que el cactus aparezca de forma aleatoria agregando 'Esperar n segundos' usando 'Elegir número al azar' en la sección de operadores."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Guiar la felicitación y el cierre del ejercicio.</div>
+            <div class="dialogue">"¡Felicidades, Genios! Han creado su propio juego estilo Chrome Dino en Scratch. Este proyecto les ha enseñado conceptos importantes como eventos, bucles, condiciones y variables. ¡Gran trabajo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (4 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state-change')">
+        <div class="title">
+            <span>🔄 Actividad 4: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Activar nuestras mentes y cuerpos para continuar la misión</div>
+        <div class="summary">Proyectar la diapositiva 19 "State Change". Introducir la actividad de cambio de estado.</div>
+    </div>
+    <div id="state-change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 19 "State Change".</div>
+            <div class="dialogue">"¡Es momento de movernos un poco! Genios, vamos a activar nuestras mentes y cuerpos para seguir trabajando. Esta actividad se llama 'El Salto del Dinosaurio' y les ayudará a estar listos para el siguiente reto."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 20 con las instrucciones de la actividad.</div>
+            <div class="dialogue">"Vamos a imitar el salto del dinosaurio. Saltaremos en nuestro lugar diez veces, simulando cómo el dinosaurio en nuestro juego sube y baja. ¡Recuerden mantenerse en movimiento! Vamos a hacer dos series de diez saltos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Felicitar a los estudiantes por participar.</div>
+            <div class="dialogue">"¡Muy bien, Genios! Han activado sus mentes y cuerpos. Ahora que hemos despertado nuestra energía, estamos listos para continuar con nuestra misión. ¡Volvamos a crear nuestro juego!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 21 "Revisión de Objetivos".</div>
+            <div class="dialogue">"¡Genios! Vamos a ver qué objetivos hemos alcanzado hasta ahora: 1) Hemos aprendido a usar bloques de eventos, 2) Hemos comenzado a programar el salto del dinosaurio, y 3) Creado el cactus. ¡Están haciendo un gran trabajo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (5 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team-gnius')">
+        <div class="title">
+            <span>🧑‍🤝‍🧑 Actividad 5: Team Gnius (5 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Trabajar en equipo para diseñar un juego en Scratch</div>
+        <div class="summary">Proyectar la diapositiva 22 "Team Gnius". Presentar la actividad de trabajo en equipo.</div>
+    </div>
+    <div id="team-gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 22 "Team Gnius".</div>
+            <div class="dialogue">"¡Genios, es momento de trabajar en equipo! Vamos a formar grupos de 3 para realizar nuestra próxima misión."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 23 "Instrucciones de Team Gnius".</div>
+            <div class="dialogue">"En esta actividad, cada equipo de 3 usará una Magic Tablet por integrante. Su misión es trabajar juntos para diseñar y planear un juego simple en Scratch. Cada uno de ustedes anotará sus ideas y luego las compartirán con el equipo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 24 con un temporizador de 30 segundos.</div>
+            <div class="dialogue">"Tienen 30 segundos para formar equipos de 3. ¡El tiempo empieza ahora!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 25 con un temporizador de 1 minuto.</div>
+            <div class="dialogue">"Ahora, uno de ustedes pasará a recoger las Magic Tablets para su equipo. Tienen 1 minuto para hacerlo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Dar tiempo a los estudiantes para preparar sus materiales.</div>
+            <div class="dialogue">"Ahora que tienen sus Magic Tablets, revisen que todo esté listo para comenzar la actividad. ¡Prepárense para trabajar en equipo!"</div>
+        </div>
+    </div>
+</div>
+   <!-- Actividad 6 (6 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🎮 Actividad 6: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 10 minutos</span>
+        </div>
+        <div class="subtitle">Crear obstáculos adicionales en el juego para aumentar la dificultad</div>
+        <div class="summary">Proyectar la diapositiva 26 "Challenge". Introducir la actividad de reto para diseñar obstáculos adicionales.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 26 "Challenge".</div>
+            <div class="dialogue">"Genios, ha llegado el momento del Challenge. Vamos a crear obstáculos adicionales para nuestro juego, ¡como terodáctilos o cualquier otra cosa que se les ocurra para aumentar la dificultad!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 27 con las instrucciones del reto.</div>
+            <div class="dialogue">"En este reto, cada equipo diseñará obstáculos adicionales en su juego para hacerlo más desafiante. Pueden crear obstáculos como terodáctilos u otras ideas que se les ocurran. Tienen que pensar cómo aparecerán y se moverán los obstáculos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Proyectar la diapositiva 28 con un temporizador de 5 minutos.</div>
+            <div class="dialogue">"Tienen 5 minutos para discutir sus ideas y planificar los obstáculos que van a agregar. Pueden ser obstáculos en el aire, como terodáctilos, o en el suelo, como rocas. ¡Usen su imaginación!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 29 con un temporizador de 1 minuto.</div>
+            <div class="dialogue">"Tómense un minuto para discutir cómo hacer que sus obstáculos sean más desafiantes. ¿Deberían aparecer más rápido? ¿Deberían moverse en direcciones diferentes?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (5 minutos): Proyectar la diapositiva 30 "Diseño de Obstáculos".</div>
+            <div class="dialogue">"Ahora es momento de crear el diseño de sus obstáculos en paper programming. Dibujen cómo se moverán los obstáculos, qué tan difíciles serán y cómo interactuarán con el dinosaurio en el juego. ¡Tienen 5 minutos para completarlo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Dar tiempo a los estudiantes para revisar sus diseños y compartir lo que han hecho con otros equipos.</div>
+            <div class="dialogue">"Es hora de compartir lo que han hecho. Cada equipo presentará sus obstáculos y explicará cómo funcionarán en el juego. ¡Empecemos a escuchar sus ideas!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7 (4 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter-egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg (4 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Responder a la pregunta sorpresa del Easter Egg</div>
+        <div class="summary">Proyectar la diapositiva 31 "Pregunta del Easter Egg". Introducir la pregunta sobre el contenido aprendido durante la clase.</div>
+    </div>
+    <div id="easter-egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 31 "Pregunta del Easter Egg".</div>
+            <div class="dialogue">"¡Es momento del Easter Egg! Voy a hacer una pregunta sobre algo que vimos en Scratch durante el Brain Gym. El primero que la responda correctamente ganará Mon-e. Presten atención a la siguiente diapositiva."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 32 con la pregunta.</div>
+            <div class="dialogue">"La pregunta es: ¿Cómo se llama la herramienta de Scratch que tiene la forma de pincel y para qué nos sirve? Levanten la mano si saben la respuesta."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Felicitar a los estudiantes por participar y seleccionar tres para responder en privado.</div>
+            <div class="dialogue">"Ahora, los tres primeros que levantaron la mano pueden venir a decirme su respuesta al oído. Así nadie más escucha y mantienen la sorpresa."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 33 con la respuesta correcta.</div>
+            <div class="dialogue">"¡Muy bien! La respuesta correcta es: herramienta pintar y sirve para personalizar un objeto. ¡Felicidades a los ganadores! Ahora tienen Mon-e por su atención y creatividad."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 (4 pasos) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor-dojo')">
+        <div class="title">
+            <span>🥋 Actividad 8: Honor de Dojo (4 pasos)</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la misión</div>
+        <div class="summary">Proyectar la diapositiva 34 "Revisión de Objetivos". Guiar a los estudiantes en una reflexión sobre los logros alcanzados durante la clase.</div>
+    </div>
+    <div id="honor-dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 34 "Revisión de Objetivos".</div>
+            <div class="dialogue">"Genios, ¡es hora de ver todo lo que logramos hoy! Revisemos nuestros objetivos: 1) Aprendimos a usar transmisiones de mensajes en Scratch, 2) Utilizamos condicionales para crear interacciones, y 3) Trabajamos en equipo para hacer paper programming. ¡Gran trabajo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar la diapositiva 35 "Reflexión y Feedback".</div>
+            <div class="dialogue">"¡Han hecho un excelente trabajo, Genios! Antes de terminar, me gustaría que levantaran la mano y compartieran algo que aprendieron o algo que les gustó de la actividad de hoy."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Felicitar al grupo por su esfuerzo y creatividad demostrada.</div>
+            <div class="dialogue">"Hoy hemos aprendido mucho sobre cómo diseñar juegos en Scratch. Quiero reconocer el esfuerzo de todos y dar un aplauso especial a quienes más se destacaron por su creatividad y trabajo en equipo. ¡Felicidades!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 36 "Honor de Dojo - Ordenando".</div>
+            <div class="dialogue">"Genios, antes de despedirnos, vamos a honrar nuestro espacio de trabajo. Recojan todo lo que usaron hoy y asegúrense de dejar todo en orden para la próxima misión."</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
